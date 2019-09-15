@@ -29,7 +29,7 @@ public class PLNPostpaidPages extends PageObject {
 
     @FindBy(xpath="//*[@id=\"pascabayar-action\"]/div[2]/a")
     WebElement klikLanjut;
-    public void klikLanjut(){
+    public void klikLanjutPembayaran(){
         Assert.assertTrue(klikLanjut.isDisplayed());
         klikLanjut.click();
     }
@@ -39,15 +39,6 @@ public class PLNPostpaidPages extends PageObject {
             Assert.assertFalse(klikLanjut.isDisplayed());
         }
         catch (Exception e){}
-    }
-
-
-
-    @FindBy(name="pembayaran_email")
-    WebElement fieldEmail;
-    public void emailPembayaran(String email){
-        Assert.assertTrue(fieldEmail.isDisplayed());
-        fieldEmail.sendKeys(email);
     }
 
     @FindBy(xpath="//*[@id=\"pulsa-denomTab-pane-2\"]/div/div/div[2]/span[3]")

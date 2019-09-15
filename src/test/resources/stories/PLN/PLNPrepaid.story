@@ -13,11 +13,27 @@ And No. Handphone <No_HP> yang benar
 And memilih nominal <nominal>
 And <email> dimasukkan pada kolom email
 And klik lanjutkan
-Then berada di halaman pembayaran <email>
+And pengguna melakukan pembayaran melalui <Bank>
+Then transaksi telah dibayar
 Examples:
-|nomor|No_HP|nominal|email|
-|01428800700|081242504777|100000|retnowijiastutik@gmail.com|
-|01428800701|081242504777|50000|opi@sepulsa.com|
+|nomor|No_HP|nominal|email|Bank|
+|01428800700|081242504777|100000|retnowijiastutik@gmail.com|BCA|
+|01428800701|081242504777|50000|opi@sepulsa.com|Mandiri|
+|01428800700|081242504777|100000|retno-wijiastutik@gmail.com|Permata|
+
+Scenario: Pembelian PLN Prabayar Berhasil (Sign In)
+Given pengguna berada di halaman awal web
+When Pengguna melakukan Sign In <email> <password>
+And klik Listrik PLN
+And Nomor meter PLN <nomor> yang benar
+And No. Handphone <No_HP> yang benar
+And memilih nominal <nominal>
+And pengguna melakukan pembayaran melalui <Bank>
+Then transaksi telah dibayar
+Examples:
+|email|password|nomor|No_HP|nominal|Bank|
+|retnowijiastutik@gmail.com|retno123|01428800700|081242504777|100000|Permata|
+|opi@sepulsa.com|123456qwerty|01428800701|081242504777|50000|BCA|
 
 Scenario: Pembelian PLN Prabayar Gagal (Nomor PLN Salah)
 Given pengguna berada di halaman awal web
@@ -53,19 +69,19 @@ Examples:
 |nomor|No_HP|
 ||081242504777|
 
-Scenario: Pembelian PLN Prabayar Berhasil (Sign In)
+Scenario: Pembelian PLN Prabayar Gagal (Email Salah dan Kosong)
 Given pengguna berada di halaman awal web
-When klik Sign In
-And Email <email> yang benar
-And Password <password> yang benar
-And klik tombol masuk
-And klik Listrik PLN
+When klik Listrik PLN
 And Nomor meter PLN <nomor> yang benar
 And No. Handphone <No_HP> yang benar
 And memilih nominal <nominal>
-Then Berada di halaman pembayaran <nama_lengkap>
+And <email> yang dimasukkan pada kolom email salah
+And klik lanjutkan
+Then pesan error muncul <error>
 Examples:
-|email|password|nomor|No_HP|nominal|nama_lengkap|
-|retnowijiastutik@gmail.com|retno123|01428800700|081242504777|100000|Retno Wiji Astutik|
-|opi@sepulsa.com|123456qwerty|01428800701|081242504777|50000|Opi39|
+|nomor|No_HP|nominal|email|error|
+|01428800700|081242504777|100000|retnowijiastutikgmail.com|Email harus diisi dalam format yang benar|
+|01428800701|081242504777|50000|o,pi@sepulsa.com|Email harus diisi dalam format yang benar|
+|01428800701|081242504777|50000||Email harus diisi dalam format yang benar|
+
 

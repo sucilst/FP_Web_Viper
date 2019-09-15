@@ -44,9 +44,16 @@ public class PLNPrepaidPages extends PageObject {
 
     @FindBy(name="pembayaran_email")
     WebElement fieldEmail;
-    public void email(String email){
+    public void emailPembayaran(String email){
         Assert.assertTrue(fieldEmail.isDisplayed());
         fieldEmail.sendKeys(email);
+    }
+
+    @FindBy(xpath="//*[@id=\"pembayaran-email-from\"]/div[2]/div[1]/span[3]")
+    WebElement validasiEmailPembayaran;
+    public void validasiEmailPembayaran(String error){
+        Assert.assertTrue(validasiEmailPembayaran.isDisplayed());
+        element(validasiEmailPembayaran).shouldContainText(error);
     }
 
     @FindBy(xpath="//*[@id=\"pembayaran-email-from\"]/div[2]/div[3]/div/div/a")

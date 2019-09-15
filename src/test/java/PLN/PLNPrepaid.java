@@ -50,29 +50,62 @@ public class PLNPrepaid extends SerenityStory {
         plnPrepaidSteps.pembayaranEmail(email);
     }
 
+    @When("$email yang dimasukkan pada kolom email salah")
+    public void whenEmailYangDimasukkanPadaKolomEmailSalah(String email) {
+        plnPrepaidSteps.pembayaranEmail(email);
+    }
+
     @When("klik lanjutkan")
     public void whenKlikLanjutkan() {
         plnPrepaidSteps.klikLanjutkan();
     }
 
-    @When("klik Sign In")
-    public void whenKlikSignIn() {
+    @When("Pengguna melakukan Sign In $email $password")
+    public void whenPenggunaMelakukanSignInEmailPassword(String email, String password) {
         plnPrepaidSteps.klikSignIn();
-    }
-
-    @When("Email $email yang benar")
-    public void whenEmailemailYangBenar(String email) {
         plnPrepaidSteps.email(email);
-    }
-
-    @When("Password $password yang benar")
-    public void whenPasswordpasswordYangBenar(String password) {
         plnPrepaidSteps.password(password);
+        plnPrepaidSteps.klikMasuk();
     }
 
-    @When("klik tombol masuk")
-    public void whenKlikTombolMasuk() {
-        plnPrepaidSteps.klikMasuk();
+    @When("pengguna melakukan pembayaran melalui $Bank")
+    public void whenPenggunaMelakukanPembayaranMelaluiBank(String Bank) {
+        switch(Bank) {
+            case "BCA":
+                plnPrepaidSteps.klikBCA();
+                plnPrepaidSteps.klikBayarBCA();
+                plnPrepaidSteps.copyNomorVABCA();
+                plnPrepaidSteps.openSandBoxBCA();
+                plnPrepaidSteps.fieldNomorVABCA();
+                plnPrepaidSteps.klikInquireBCA();
+                plnPrepaidSteps.klikPayBCA();
+                break;
+            case "Mandiri":
+                plnPrepaidSteps.klikMandiri();
+                plnPrepaidSteps.klikBayarMandiri();
+                plnPrepaidSteps.copyNomorVAMandiri();
+                plnPrepaidSteps.openSandBoxMandiri();
+                plnPrepaidSteps.fieldBillerCode();
+                plnPrepaidSteps.fieldBillKey();
+                plnPrepaidSteps.klikInquireMandiri();
+                plnPrepaidSteps.klikPayMandiri();
+                break;
+            case "Permata":
+                plnPrepaidSteps.klikPermata();
+                plnPrepaidSteps.klikBayarPermata();
+                plnPrepaidSteps.copyNomorVAPermata();
+                plnPrepaidSteps.openSandBoxPermata();
+                plnPrepaidSteps.fieldNomorVABCA();
+                plnPrepaidSteps.klikInquirePermata();
+                plnPrepaidSteps.klikPayPermata();
+                break;
+        }
+
+    }
+
+    @Then("transaksi telah dibayar")
+    public void thenTransaksiTelahDibayar() {
+        // PENDING
     }
 
     @Then("berada di halaman pembayaran $email")
@@ -88,6 +121,9 @@ public class PLNPrepaid extends SerenityStory {
                 break;
             case "Server PLN Cut-off.":
                 plnPrepaidSteps.validasiError(error);
+                break;
+            case "Email harus diisi dalam format yang benar":
+                plnPrepaidSteps.validasiEmailPembayaran(error);
                 break;
         }
     }
