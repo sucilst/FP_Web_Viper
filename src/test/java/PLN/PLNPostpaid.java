@@ -72,13 +72,21 @@ public class PLNPostpaid extends SerenityStory {
         plnPostpaidSteps.klikMasuk();
     }
 
+    @When("Sign In $email $password")
+    public void whenSignInEmailPassword(String email, String password) {
+        plnPostpaidSteps.klikSignin();
+        plnPostpaidSteps.email(email);
+        plnPostpaidSteps.password(password);
+        plnPostpaidSteps.klikMasuk2();
+    }
+
     @When("Pengguna melakukan pembayaran melalui $Bank")
     public void whenPenggunaMelakukanPembayaranMelaluiBank(String Bank) {
         switch(Bank) {
             case "BCA":
                 plnPostpaidSteps.klikBCA();
-                plnPostpaidSteps.klikBayarBCA();
-                plnPostpaidSteps.copyNomorVABCA();
+                plnPostpaidSteps.klikBayar();
+                plnPostpaidSteps.copyNomorVA();
                 plnPostpaidSteps.openSandBoxBCA();
                 plnPostpaidSteps.fieldNomorVABCA();
                 plnPostpaidSteps.klikInquireBCA();
@@ -86,8 +94,8 @@ public class PLNPostpaid extends SerenityStory {
                 break;
             case "Mandiri":
                 plnPostpaidSteps.klikMandiri();
-                plnPostpaidSteps.klikBayarMandiri();
-                plnPostpaidSteps.copyNomorVAMandiri();
+                plnPostpaidSteps.klikBayar();
+                plnPostpaidSteps.copyNomorVA();
                 plnPostpaidSteps.openSandBoxMandiri();
                 plnPostpaidSteps.fieldBillerCode();
                 plnPostpaidSteps.fieldBillKey();
@@ -96,12 +104,32 @@ public class PLNPostpaid extends SerenityStory {
                 break;
             case "Permata":
                 plnPostpaidSteps.klikPermata();
-                plnPostpaidSteps.klikBayarPermata();
-                plnPostpaidSteps.copyNomorVAPermata();
+                plnPostpaidSteps.klikBayar();
+                plnPostpaidSteps.copyNomorVA();
                 plnPostpaidSteps.openSandBoxPermata();
                 plnPostpaidSteps.fieldNomorVABCA();
                 plnPostpaidSteps.klikInquirePermata();
                 plnPostpaidSteps.klikPayPermata();
+                break;
+            case "Sepulsa Kredit":
+                plnPostpaidSteps.klikBayar();
+                break;
+            case "Credit Card":
+                plnPostpaidSteps.klikCC();
+                plnPostpaidSteps.ccCVV("123");
+                plnPostpaidSteps.klikBayar();
+                break;
+            case "BCA Failed":
+                plnPostpaidSteps.klikBCA();
+                plnPostpaidSteps.klikBayar();
+                break;
+            case "Mandiri Failed":
+                plnPostpaidSteps.klikMandiri();
+                plnPostpaidSteps.klikBayar();
+                break;
+            case "Permata Failed":
+                plnPostpaidSteps.klikPermata();
+                plnPostpaidSteps.klikBayar();
                 break;
         }
 
@@ -110,6 +138,24 @@ public class PLNPostpaid extends SerenityStory {
     @Then("pengguna berada di halaman pembayaran $email")
     public void thenPenggunaBeradaDiHalamanPembayaranemail(String email) {
         plnPostpaidSteps.validasiAnon(email);
+    }
+
+    @Then("pengguna berhasil melakukan transaksi $Bank $validasi")
+    public void thenPenggunaBerhasilMelakukanTransaksi(String Bank, String validasi) {
+        switch (Bank){
+            case "BCA":
+                plnPostpaidSteps.validasiPembayaranBCAPermata(validasi);
+                break;
+            case "Permata":
+                plnPostpaidSteps.validasiPembayaranBCAPermata(validasi);
+                break;
+            case "Mandiri":
+                plnPostpaidSteps.validasiPembayaranMandiri(validasi);
+                break;
+            case "Credit Card":
+                plnPostpaidSteps.validasiPembayaranSepulsa(validasi);
+                break;
+        }
     }
 
     @Then("pesan error tertampil $errors")

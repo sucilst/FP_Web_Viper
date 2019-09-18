@@ -22,28 +22,12 @@ public class VirtualAccountSteps extends ScenarioSteps {
         virtualAccountPages.klikPermataVA();
     }
 
-    public void klikBayarBCA(){
-        virtualAccountPages.klikBayarBCA();
+    public void klikBayar(){
+        virtualAccountPages.klikBayar();
     }
 
-    public void klikBayarMandiri(){
-        virtualAccountPages.klikBayarMandiri();
-    }
-
-    public void klikBayarPermata(){
-        virtualAccountPages.klikBayarPermata();
-    }
-
-    public void copyNomorVABCA(){
-        virtualAccountPages.copyNomorVABCA();
-    }
-
-    public void copyNomorVAMandiri(){
-        virtualAccountPages.copyNomorVAMandiri();
-    }
-
-    public void copyNomorVAPermata(){
-        virtualAccountPages.copyNomorVAPermata();
+    public void copyNomorVA(){
+        virtualAccountPages.copyNomorVA();
     }
 
     public void openSandBoxBCA(){
@@ -92,5 +76,13 @@ public class VirtualAccountSteps extends ScenarioSteps {
 
     public void klikPayPermata(){
         virtualAccountPages.klikPayPermata();
+    }
+
+    public void validasiPembayaranBCAPermata(String success){
+        virtualAccountPages.validasiPembayaranBCA(success);
+    }
+
+    public void validasiPembayaranMandiri(String success){
+        virtualAccountPages.validasiPembayaranMandiri(success);
     }
 }

@@ -5,25 +5,25 @@ As seorang pengguna
 I want memiliki akun Sepulsa
 So that saya dapat menggunakan semua fitur yang terdapat pada website Sepulsa
 
-!-- Scenario: Sign Up Berhasil
-!-- Given pengguna berada di halaman beranda
-!-- When klik Sign Up
-!-- And masukkan <nama_lengkap> yang benar
-!-- And email <email> yang benar
-!-- And No HP <No_HP> yang benar
-!-- And Password <password> yang benar
-!-- And <pilihan> klik kolom syarat, ketentuan, dan kebijakan privasi
-!-- And klik tombol daftar
-!-- And memasukkan OTP
-!-- And klik konfirmasi No HP
-!-- Then berada di halaman dashboard <nama_lengkap>
-!-- Examples:
-!-- |nama_lengkap|email|No_HP|password|pilihan|
-!-- |Difa Rakaditya|rakaditya@alterra.id|081242504777|alterra1997|ya|
-!-- |Difa Rakaditya97|raka-ditya@alterra.id|081578021932|alterra1997|ya|
-!-- |,,,,|slestari@alterra.id|085691091821|alterra1997|ya|
+Scenario: Sign Up Berhasil
+Given pengguna berada di halaman beranda
+When klik Sign Up
+And masukkan <nama_lengkap> yang benar
+And email <email> yang benar
+And No HP <No_HP> yang benar
+And Password <password> yang benar
+And <pilihan> klik kolom syarat, ketentuan, dan kebijakan privasi
+And klik tombol daftar
+And memasukkan OTP
+And klik konfirmasi No HP
+Then berada di halaman dashboard <nama_lengkap>
+Examples:
+|nama_lengkap|email|No_HP|password|pilihan|
+|Difa Rakaditya|rakaditya@alterra.id|081242504777|alterra1997|ya|
+|Difa Rakaditya97|raka-ditya@alterra.id|081578021932|alterra1997|ya|
+|,,,,|slestari@alterra.id|085691091821|alterra1997|ya|
 !-- |Difa Rakaditya|rakaditya@alterra.id|081242504777|19971997|ya|
-!-- |Difa Rakaditya|rakaditya@alterra.id|081242504777|,,,,,,|ya|
+|Difa Rakaditya|rakaditya@alterra.id|082276520892|,,,,,,|ya|
 !-- |Difa Rakaditya|rakaditya@alterra.id|081578021932|alterra|ya|
 
 Scenario: Sign Up Gagal (Nama Kurang dari 3 karakter)

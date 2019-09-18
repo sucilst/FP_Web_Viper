@@ -50,6 +50,14 @@ public class PLNPrepaid extends SerenityStory {
         plnPrepaidSteps.pembayaranEmail(email);
     }
 
+    @When("sign in pembayaran $email $password")
+    public void whenSignInEmailPassword(String email, String password) {
+        plnPrepaidSteps.klikSignin();
+        plnPrepaidSteps.email(email);
+        plnPrepaidSteps.password(password);
+        plnPrepaidSteps.klikMasuk2();
+    }
+
     @When("$email yang dimasukkan pada kolom email salah")
     public void whenEmailYangDimasukkanPadaKolomEmailSalah(String email) {
         plnPrepaidSteps.pembayaranEmail(email);
@@ -73,8 +81,8 @@ public class PLNPrepaid extends SerenityStory {
         switch(Bank) {
             case "BCA":
                 plnPrepaidSteps.klikBCA();
-                plnPrepaidSteps.klikBayarBCA();
-                plnPrepaidSteps.copyNomorVABCA();
+                plnPrepaidSteps.klikBayar();
+                plnPrepaidSteps.copyNomorVA();
                 plnPrepaidSteps.openSandBoxBCA();
                 plnPrepaidSteps.fieldNomorVABCA();
                 plnPrepaidSteps.klikInquireBCA();
@@ -82,8 +90,8 @@ public class PLNPrepaid extends SerenityStory {
                 break;
             case "Mandiri":
                 plnPrepaidSteps.klikMandiri();
-                plnPrepaidSteps.klikBayarMandiri();
-                plnPrepaidSteps.copyNomorVAMandiri();
+                plnPrepaidSteps.klikBayar();
+                plnPrepaidSteps.copyNomorVA();
                 plnPrepaidSteps.openSandBoxMandiri();
                 plnPrepaidSteps.fieldBillerCode();
                 plnPrepaidSteps.fieldBillKey();
@@ -92,20 +100,53 @@ public class PLNPrepaid extends SerenityStory {
                 break;
             case "Permata":
                 plnPrepaidSteps.klikPermata();
-                plnPrepaidSteps.klikBayarPermata();
-                plnPrepaidSteps.copyNomorVAPermata();
+                plnPrepaidSteps.klikBayar();
+                plnPrepaidSteps.copyNomorVA();
                 plnPrepaidSteps.openSandBoxPermata();
                 plnPrepaidSteps.fieldNomorVABCA();
                 plnPrepaidSteps.klikInquirePermata();
                 plnPrepaidSteps.klikPayPermata();
                 break;
+            case "Sepulsa Kredit":
+                plnPrepaidSteps.klikBayar();
+                break;
+            case "Credit Card":
+                plnPrepaidSteps.klikCC();
+                plnPrepaidSteps.ccCVV("123");
+                plnPrepaidSteps.klikBayar();
+                break;
+            case "BCA Failed":
+                plnPrepaidSteps.klikBCA();
+                plnPrepaidSteps.klikBayar();
+                break;
+            case "Mandiri Failed":
+                plnPrepaidSteps.klikMandiri();
+                plnPrepaidSteps.klikBayar();
+                break;
+            case "Permata Failed":
+                plnPrepaidSteps.klikPermata();
+                plnPrepaidSteps.klikBayar();
+                break;
         }
 
     }
 
-    @Then("transaksi telah dibayar")
-    public void thenTransaksiTelahDibayar() {
-        // PENDING
+    @Then("transaksi telah dibayar $Bank $validasi")
+    public void thenTransaksiTelahDibayar(String Bank, String validasi) {
+        switch (Bank){
+            case "BCA":
+                plnPrepaidSteps.validasiPembayaranBCAPermata(validasi);
+                break;
+            case "Permata":
+                plnPrepaidSteps.validasiPembayaranBCAPermata(validasi);
+                break;
+            case "Mandiri":
+                plnPrepaidSteps.validasiPembayaranMandiri(validasi);
+                break;
+            case "Credit Card":
+                plnPrepaidSteps.validasiPembayaranSepulsa(validasi);
+                break;
+        }
     }
 
     @Then("berada di halaman pembayaran $email")

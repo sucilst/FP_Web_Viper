@@ -92,4 +92,11 @@ public class PLNPrepaidPages extends PageObject {
         }
         catch (Exception e){}
     }
+
+    @FindBy(xpath="//*[@id=\"pembayaran-email-from\"]/div[2]/div[3]/div/div/p/a")
+    WebElement klikSignin;
+    public void klikSignin(){
+        Assert.assertTrue(klikSignin.isDisplayed());
+        klikSignin.click();
+    }
 }

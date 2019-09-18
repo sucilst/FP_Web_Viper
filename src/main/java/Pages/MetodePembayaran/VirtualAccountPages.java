@@ -2,6 +2,7 @@ package Pages.MetodePembayaran;
 
 import net.thucydides.core.pages.PageObject;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -43,46 +44,22 @@ public class VirtualAccountPages extends PageObject {
         fieldBillKey.sendKeys(nomorVA);
     }
 
-    @FindBy(xpath="//*[@id=\"app\"]/div/div/section[2]/div/div/div[2]/div/div/div[3]/div/div[1]/div[2]/div/div[2]/button")
-    WebElement klikBayarBCA;
-    public void klikBayarBCA(){
-        Assert.assertTrue(klikBayarBCA.isDisplayed());
-        klikBayarBCA.click();
-    }
+    @FindBy(css="#app > div > div > section.pembayaran.list-item-transaction > div > div > div.col-lg-7.col-xs-12.pull-right.pembayaran-action > div > div > div.pembayaran-opsi-metode > div > div.in.panel.panel-default > div.panel-collapse.collapse.in > div > div.field-action > button")
+    WebElement klikBayar;
+    public void klikBayar(){
+        try{
+            Thread.sleep(1000);
+            Assert.assertTrue(klikBayar.isDisplayed());
+            klikBayar.click();
+        } catch (Exception e){}
 
-    @FindBy(xpath="//*[@id=\"app\"]/div/div/section[2]/div/div/div[2]/div/div/div[3]/div/div[3]/div[2]/div/div[2]/button")
-    WebElement klikBayarMandiri;
-    public void klikBayarMandiri(){
-        Assert.assertTrue(klikBayarMandiri.isDisplayed());
-        klikBayarMandiri.click();
-    }
-
-    @FindBy(xpath="//*[@id=\"app\"]/div/div/section[2]/div/div/div[2]/div/div/div[3]/div/div[4]/div[2]/div/div[2]/button")
-    WebElement klikBayarPermata;
-    public void klikBayarPermata(){
-        Assert.assertTrue(klikBayarPermata.isDisplayed());
-        klikBayarPermata.click();
     }
 
     @FindBy(xpath="//*[@id=\"app\"]/div/div/section[2]/div/div/div/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div[2]")
-    WebElement copyNomorVABCA;
-    public void copyNomorVABCA(){
-        Assert.assertTrue(copyNomorVABCA.isDisplayed());
-        nomorVA = copyNomorVABCA.getText();
-    }
-
-    @FindBy(xpath="//*[@id=\"app\"]/div/div/section[2]/div/div/div/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div[2]")
-    WebElement copyNomorVAMandiri;
-    public void copyNomorVAMandiri(){
-        Assert.assertTrue(copyNomorVAMandiri.isDisplayed());
-        nomorVA = copyNomorVAMandiri.getText();
-    }
-
-    @FindBy(xpath="//*[@id=\"app\"]/div/div/section[2]/div/div/div/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div[2]")
-    WebElement copyNomorVAPermata;
-    public void copyNomorVAPermata(){
-        Assert.assertTrue(copyNomorVAPermata.isDisplayed());
-        nomorVA = copyNomorVAPermata.getText();
+    WebElement copyNomorVA;
+    public void copyNomorVA(){
+        Assert.assertTrue(copyNomorVA.isDisplayed());
+        nomorVA = copyNomorVA.getText();
     }
 
     @FindBy(id="inputMerchantId")
@@ -132,5 +109,19 @@ public class VirtualAccountPages extends PageObject {
     public void klikPayPermata(){
         Assert.assertTrue(klikPayPermata.isDisplayed());
         klikPayPermata.click();
+    }
+
+    @FindBy(xpath="/html/body/div[2]/div[2]")
+    WebElement validasiPembayaranBCAPermata;
+    public void validasiPembayaranBCA(String success){
+        Assert.assertTrue(validasiPembayaranBCAPermata.isDisplayed());
+        element(validasiPembayaranBCAPermata).shouldContainText(success);
+    }
+
+    @FindBy(xpath="//*[@id=\"wrap\"]/div[2]/div[2]")
+            WebElement validasiPembayaranMandiri;
+    public void validasiPembayaranMandiri(String success){
+        Assert.assertTrue(validasiPembayaranMandiri.isDisplayed());
+        element(validasiPembayaranMandiri).shouldContainText(success);
     }
 }

@@ -40,4 +40,11 @@ public class BPJSPages extends PageObject {
         Assert.assertTrue(klikLanjutPembayaran.isDisplayed());
         klikLanjutPembayaran.click();
     }
+
+    @FindBy(xpath="//*[@id=\"product-tabs-pane-4\"]/div/div[1]/span[3]")
+    WebElement validasiError;
+    public void validasiError(String error){
+        Assert.assertTrue(klikLanjutPembayaran.isDisplayed());
+        element(validasiError).shouldContainText(error);
+    }
 }

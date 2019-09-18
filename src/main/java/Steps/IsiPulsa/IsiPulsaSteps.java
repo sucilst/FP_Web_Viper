@@ -1,5 +1,6 @@
-package Steps.PLN;
+package Steps.IsiPulsa;
 
+import Pages.IsiPulsa.IsiPulsaPages;
 import Pages.MetodePembayaran.CreditCardPages;
 import Pages.MetodePembayaran.SepulsaKreditPages;
 import Pages.MetodePembayaran.VirtualAccountPages;
@@ -8,68 +9,21 @@ import Pages.SignIn.SignInPages;
 import Pages.SignUp.SignUpPages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class PLNPrepaidSteps extends ScenarioSteps {
-    PLNPrepaidPages plnPrepaidPages;
+public class IsiPulsaSteps extends ScenarioSteps {
     SignInPages signInPages;
     SignUpPages signUpPages;
+    IsiPulsaPages isiPulsaPages;
     VirtualAccountPages virtualAccountPages;
+    PLNPrepaidPages plnPrepaidPages;
     SepulsaKreditPages sepulsaKreditPages;
     CreditCardPages creditCardPages;
 
-    public void openHalaman(){
-        plnPrepaidPages.open();
-    }
-
-    public void klikListrik(){
-        plnPrepaidPages.klikListrik();
-    }
-
-    public void nomorPLN(String nomor){
-        plnPrepaidPages.nomorMeter(nomor);
-    }
-
-    public void noHP(String No_HP){
-        plnPrepaidPages.noHP(No_HP);
-    }
-
-    public void nominal(String nominal){
-        plnPrepaidPages.nominal(nominal);
-    }
-
-    public void pembayaranEmail(String email){
-        plnPrepaidPages.emailPembayaran(email);
-    }
-
-    public void klikLanjutkan(){
-        plnPrepaidPages.klikLanjutkan();
-    }
-
-    public void validasiAnon(String email){
-        plnPrepaidPages.validasiAnon(email);
-    }
-
-    public void validasiLogin(String nama_lengkap){
-        plnPrepaidPages.validasiLogin(nama_lengkap);
-    }
-
-    public void validasiError(String error){
-        plnPrepaidPages.validasiError(error);
-    }
-
-    public void validasiNominal(){
-        plnPrepaidPages.pilihanNominal();
+    public void openBerandaSepulsa(){
+        isiPulsaPages.open();
     }
 
     public void klikSignIn(){
         signInPages.klikSignIn();
-    }
-
-    public void klikSignin(){
-        plnPrepaidPages.klikSignin();
-    }
-
-    public void klikMasuk2(){
-        signInPages.klikMasuk2();
     }
 
     public void email(String email){
@@ -84,8 +38,28 @@ public class PLNPrepaidSteps extends ScenarioSteps {
         signInPages.klikMasuk();
     }
 
-    public void validasiEmailPembayaran(String error){
-        plnPrepaidPages.validasiEmailPembayaran(error);
+    public void klikMasuk2(){
+        signInPages.klikMasuk2();
+    }
+
+    public void fieldNomorHP(String No_HP){
+        isiPulsaPages.fieldNomorHP(No_HP);
+    }
+
+    public void denom(String pulsa){
+        isiPulsaPages.denomPulsa(pulsa);
+    }
+
+    public void pembayaranEmail(String email){
+        plnPrepaidPages.emailPembayaran(email);
+    }
+
+    public void klikSignin(){
+        plnPrepaidPages.klikSignin();
+    }
+
+    public void klikLanjutkan(){
+        plnPrepaidPages.klikLanjutkan();
     }
 
     public void klikBCA(){
@@ -162,6 +136,14 @@ public class PLNPrepaidSteps extends ScenarioSteps {
 
     public void validasiPembayaranMandiri(String success){
         virtualAccountPages.validasiPembayaranMandiri(success);
+    }
+
+    public void validasiError(String error){
+        isiPulsaPages.validasiError(error);
+    }
+
+    public void klikSepulsaKredit(){
+        sepulsaKreditPages.klikSepulsaKredit();
     }
 
     public void validasiPembayaranSepulsa(String nama_lengkap){

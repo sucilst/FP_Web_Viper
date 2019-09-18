@@ -1,5 +1,7 @@
 package Steps.PLN;
 
+import Pages.MetodePembayaran.CreditCardPages;
+import Pages.MetodePembayaran.SepulsaKreditPages;
 import Pages.MetodePembayaran.VirtualAccountPages;
 import Pages.PLN.PLNPostpaidPages;
 import Pages.PLN.PLNPrepaidPages;
@@ -13,6 +15,8 @@ public class PLNPostpaidSteps extends ScenarioSteps {
     SignInPages signInPages;
     SignUpPages signUpPages;
     VirtualAccountPages virtualAccountPages;
+    SepulsaKreditPages sepulsaKreditPages;
+    CreditCardPages creditCardPages;
 
     public void klikListrik(){
         plnPrepaidPages.klikListrik();
@@ -66,6 +70,14 @@ public class PLNPostpaidSteps extends ScenarioSteps {
         signInPages.klikSignIn();
     }
 
+    public void klikSignin(){
+        plnPrepaidPages.klikSignin();
+    }
+
+    public void klikMasuk2(){
+        signInPages.klikMasuk2();
+    }
+
     public void email(String email){
         signUpPages.email(email);
     }
@@ -86,28 +98,12 @@ public class PLNPostpaidSteps extends ScenarioSteps {
         virtualAccountPages.klikPermataVA();
     }
 
-    public void klikBayarBCA(){
-        virtualAccountPages.klikBayarBCA();
+    public void klikBayar(){
+        virtualAccountPages.klikBayar();
     }
 
-    public void klikBayarMandiri(){
-        virtualAccountPages.klikBayarMandiri();
-    }
-
-    public void klikBayarPermata(){
-        virtualAccountPages.klikBayarPermata();
-    }
-
-    public void copyNomorVABCA(){
-        virtualAccountPages.copyNomorVABCA();
-    }
-
-    public void copyNomorVAMandiri(){
-        virtualAccountPages.copyNomorVAMandiri();
-    }
-
-    public void copyNomorVAPermata(){
-        virtualAccountPages.copyNomorVAPermata();
+    public void copyNomorVA(){
+        virtualAccountPages.copyNomorVA();
     }
 
     public void openSandBoxBCA(){
@@ -160,5 +156,25 @@ public class PLNPostpaidSteps extends ScenarioSteps {
 
     public void klikPayPermata(){
         virtualAccountPages.klikPayPermata();
+    }
+
+    public void validasiPembayaranBCAPermata(String success){
+        virtualAccountPages.validasiPembayaranBCA(success);
+    }
+
+    public void validasiPembayaranMandiri(String success){
+        virtualAccountPages.validasiPembayaranMandiri(success);
+    }
+
+    public void validasiPembayaranSepulsa(String nama_lengkap){
+        sepulsaKreditPages.validasiPembayaranSepulsa(nama_lengkap);
+    }
+
+    public void klikCC(){
+        creditCardPages.klikCreditCard();
+    }
+
+    public void ccCVV(String cvv){
+        creditCardPages.ccCVV(cvv);
     }
 }
