@@ -17,9 +17,8 @@ And user melakukan pembayaran melalui <Bank>
 Then transaksi berhasil dibayar <Bank> <validasi>
 Examples:
 |nomor|No_HP|email|Bank|password|
-|0000001430071802|081242504777|opi@sepulsa.com|Credit Card|123456qwerty|Opi39|
-|0000001430071801|081242504777|retnowijiastutik@gmail.com|Permata|retno123|Transaksi Sukses|
-
+|0000001430071801|081242504777|opi@sepulsa.com|Credit Card|123456qwerty|Opi39|
+|0000001430071802|081242504777|retnowijiastutik@gmail.com|Permata|retno123|Transaksi Sukses|
 
 Scenario: Sukses membayar tagihan BPJS (Sepulsa Kredit, Sign In)
 Given user sudah ada pada halaman beranda sepulsa
@@ -30,7 +29,7 @@ And memasukan Nomor BPJS <nomor> valid
 And memasukan No HP <No_HP> valid
 And menekan tombol "Lanjut ke Pembayaran"
 And user melakukan pembayaran melalui <Bank>
-Then transaksi berhasil dibayar <Bank> <validasi>
+Then transaksi berhasil <Bank> <validasi>
 Examples:
 |nomor|No_HP|email|Bank|password|
 |0000001430071801|081242504777|retnowijiastutik@gmail.com|Sepulsa Kredit|retno123|Retno Wiji Astutik|
@@ -44,7 +43,7 @@ And memasukan No HP <No_HP> valid
 And menekan tombol "Lanjut ke Pembayaran"
 And user melakukan sign in <email> <password>
 And user melakukan pembayaran melalui <Bank>
-Then transaksi berhasil dibayar <Bank> <validasi>
+Then transaksi berhasil <Bank> <validasi>
 Examples:
 |nomor|No_HP|email|Bank|password|
 |0000001430071802|081242504777|retnowijiastutik@gmail.com|Sepulsa Kredit|retno123|Retno Wiji Astutik|
@@ -59,7 +58,7 @@ And menekan tombol "Lanjut ke Pembayaran"
 And mengisi email <email> valid
 And menekan tombol "Lanjutkan"
 And user melakukan pembayaran melalui <Bank>
-Then transaksi berhasil dibayar <Bank> <validasi>
+Then transaksi berhasil <Bank> <validasi>
 Examples:
 |nomor|No_HP|email|Bank|validasi|
 |0000001430071801|081242504777|retnowijiastutik@gmail.com|Permata|Transaksi Sukses|
@@ -74,7 +73,7 @@ And memasukan Nomor BPJS <nomor> valid
 And memasukan No HP <No_HP> valid
 And menekan tombol "Lanjut ke Pembayaran"
 And user melakukan pembayaran melalui <Bank>
-Then transaksi berhasil dibayar <Bank> <validasi>
+Then transaksi berhasil <Bank> <validasi>
 Examples:
 |nomor|No_HP|email|Bank|password|
 |0000001430071801|081242504777|retnowijiastutik@gmail.com|Permata|retno123|Transaksi Sukses|
@@ -89,7 +88,7 @@ And memasukan No HP <No_HP> valid
 And menekan tombol "Lanjut ke Pembayaran"
 And user melakukan sign in <email> <password>
 And user melakukan pembayaran melalui <Bank>
-Then transaksi berhasil dibayar <Bank> <validasi>
+Then transaksi berhasil <Bank> <validasi>
 Examples:
 |nomor|No_HP|email|Bank|password|
 |0000001430071801|081242504777|retnowijiastutik@gmail.com|Permata|retno123|Transaksi Sukses|
