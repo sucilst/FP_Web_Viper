@@ -155,6 +155,18 @@ public class PLNPostpaid extends SerenityStory {
             case "Credit Card":
                 plnPostpaidSteps.validasiPembayaranSepulsa(validasi);
                 break;
+            case "Sepulsa Kredit":
+                plnPostpaidSteps.validasiPembayaranSepulsa(validasi);
+                break;
+            case "Mandiri Failed":
+                plnPostpaidSteps.validasiPembayaranSepulsa(validasi);
+                break;
+            case "BCA Failed":
+                plnPostpaidSteps.validasiPembayaranSepulsa(validasi);
+                break;
+            case "Permata Failed":
+                plnPostpaidSteps.validasiPembayaranSepulsa(validasi);
+                break;
         }
     }
 
@@ -179,4 +191,8 @@ public class PLNPostpaid extends SerenityStory {
         }
     }
 
+    @Then("metode pembayaran Credit Card tidak ditampilkan")
+        public void thenMetodePembayaranCreditCardTidakDitampilkan(){
+            plnPostpaidSteps.validasiCC();
+        }
 }

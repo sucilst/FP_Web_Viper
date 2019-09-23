@@ -62,7 +62,7 @@ public class SignUpPages extends PageObject {
     public void otpCode(){
         try{
             Assert.assertTrue(klikDaftar.isDisplayed());
-            Thread.sleep(40000);
+            Thread.sleep(90000);
         }
         catch (Exception e ) {
         }

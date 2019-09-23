@@ -14,6 +14,16 @@ public class CreditCardPages extends PageObject {
         klikCreditCard.click();
     }
 
+    @FindBy(id="payment-panel-commerce_payment_commerce_veritrans")
+    WebElement validasiCC;
+    public void validasiCC(){
+        try{
+            Assert.assertFalse(validasiCC.isDisplayed());
+        }catch (Exception e){
+        }
+
+    }
+
     @FindBy(xpath="//*[@id=\"app\"]/div/div/section[2]/div/div/div[2]/div/div/div[3]/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div/div/div/input")
     WebElement tambahCC;
     public void tambahCC(){
@@ -61,7 +71,6 @@ public class CreditCardPages extends PageObject {
         try {
             Thread.sleep(1000);
             Assert.assertTrue(ccSave.isDisplayed());
-            Thread.sleep(1000);
             Assert.assertTrue(klikOK.isDisplayed());
         }catch (Exception e){
         }

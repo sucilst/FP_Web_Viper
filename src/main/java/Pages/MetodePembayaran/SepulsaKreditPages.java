@@ -16,7 +16,13 @@ public class SepulsaKreditPages extends PageObject {
     @FindBy(xpath="//*[@id=\"app\"]/div/div/section[2]/div/div/div/div[2]/div[1]/div/div/div[2]/h1")
     WebElement validasiPembayaranSepulsa;
     public void validasiPembayaranSepulsa(String nama_lengkap){
-        Assert.assertTrue(validasiPembayaranSepulsa.isDisplayed());
-        element(validasiPembayaranSepulsa).shouldContainText("Hi "+nama_lengkap+", Terima kasih sudah bertransaksi di Sepulsa");
+        try{
+            Thread.sleep(5000);
+            Assert.assertTrue(validasiPembayaranSepulsa.isDisplayed());
+            element(validasiPembayaranSepulsa).shouldContainText("Hi "+nama_lengkap+", Terima kasih sudah bertransaksi di Sepulsa");
+        }
+        catch (Exception e){
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 Meta:
+@PLNPrepaid
 
 Narrative:
 As seorang pengguna
@@ -17,7 +18,20 @@ Then transaksi telah dibayar <Bank> <validasi>
 Examples:
 |email|password|nomor|No_HP|nominal|Bank|validasi|
 |retnowijiastutik@gmail.com|retno123|01428800700|081242504777|100000|BCA|Payment Success|
-|opi@sepulsa.com|123456qwerty|01428800700|081242504777|100000|Credit Card|Opi39|
+|opi@sepulsa.com|123456qwerty|01428800700|081242504777|100000|Mandiri|Success Transaction|
+
+Scenario: Pembelian PLN Prabayar Berhasil (Sign In di awal)
+Given pengguna berada di halaman awal web
+When Pengguna melakukan Sign In <email> <password>
+And klik Listrik PLN
+And Nomor meter PLN <nomor> yang benar
+And No. Handphone <No_HP> yang benar
+And memilih nominal <nominal>
+And pengguna melakukan pembayaran melalui <Bank>
+Then transaksi telah dibayar <Bank> <validasi>
+Examples:
+|email|password|nomor|No_HP|nominal|Bank|validasi|
+|retnowijiastutik@gmail.com|retno123|01428800700|081242504777|100000|Permata|Transaksi Sukses|
 
 Scenario: Pembelian PLN Prabayar Berhasil (Anonim)
 Given pengguna berada di halaman awal web
@@ -33,19 +47,7 @@ Examples:
 |nomor|No_HP|nominal|email|Bank|validasi|
 |01428800700|081242504777|100000|retnowijiastutik@gmail.com|Permata|Transaksi Sukses|
 |01428800700|081242504777|100000|retno-wijiastutik@gmail.com|Mandiri|Success Transaction|
-
-Scenario: Pembelian PLN Prabayar Berhasil (Sign In)
-Given pengguna berada di halaman awal web
-When Pengguna melakukan Sign In <email> <password>
-And klik Listrik PLN
-And Nomor meter PLN <nomor> yang benar
-And No. Handphone <No_HP> yang benar
-And memilih nominal <nominal>
-And pengguna melakukan pembayaran melalui <Bank>
-Then transaksi telah dibayar <Bank> <validasi>
-Examples:
-|email|password|nomor|No_HP|nominal|Bank|validasi|
-|retnowijiastutik@gmail.com|retno123|01428800700|081242504777|100000|BCA|Payment Success|
+|01428800700|081242504777|50000|retno-wijiastutik@gmail.com|BCA|Payment Success|
 
 Scenario: Pembelian PLN Prabayar Gagal (Nomor PLN Salah)
 Given pengguna berada di halaman awal web
@@ -105,14 +107,15 @@ And memilih nominal <nominal>
 And <email> dimasukkan pada kolom email
 And klik lanjutkan
 And pengguna melakukan pembayaran melalui <Bank>
-Then Pesan tidak dibayar dalam waktu yang ditentukan
+Then transaksi telah dibayar <Bank> <validasi>
+And Pesanan tidak dibayar dalam waktu yang ditentukan
 And Transaksi dibatalkan
 Examples:
-|nomor|No_HP|nominal|email|Bank|
-|01428800700|081242504777|100000|retnowijiastutik@gmail.com|Permata Failed|
-|01428800700|081242504777|100000|retno-wijiastutik@gmail.com|Mandiri Failed|
+|nomor|No_HP|nominal|email|Bank|validasi|
+|01428800700|081242504777|100000|retnowijiastutik@gmail.com|Permata Failed|Retno Wiji Astutik|
+|01428800700|081242504777|50000|retno-wijiastutik@gmail.com|Mandiri Failed|Retno Wiji Astutik|
 
-Scenario: Pembelian PLN Prabayar Berhasil (Sepulsa Kredit, Sign In)
+Scenario: Pembelian PLN Prabayar Berhasil (Sepulsa Kredit, Sign In di awal)
 Given pengguna berada di halaman awal web
 When Pengguna melakukan Sign In <email> <password>
 And klik Listrik PLN
@@ -123,7 +126,7 @@ And pengguna melakukan pembayaran melalui <Bank>
 Then transaksi telah dibayar <Bank> <validasi>
 Examples:
 |email|password|nomor|No_HP|nominal|Bank|validasi|
-|retnowijiastutik@gmail.com|retno123|01428800700|081242504777|100000|Sepulsa Kredit|Retno Wiji Astutik|
+|retnowijiastutik@gmail.com|retno123|01428800700|081242504777|50000|Sepulsa Kredit|Retno Wiji Astutik|
 
 Scenario: Pembelian PLN Prabayar Berhasil (Sepulsa Kredit, Sign In di halaman pembayaran)
 Given pengguna berada di halaman awal web
@@ -136,6 +139,26 @@ And pengguna melakukan pembayaran melalui <Bank>
 Then transaksi telah dibayar <Bank> <validasi>
 Examples:
 |email|password|nomor|No_HP|nominal|Bank|validasi|
-|retnowijiastutik@gmail.com|retno123|01428800701|081242504777|50000|Sepulsa Kredit|Retno Wiji Astutik|
+|retnowijiastutik@gmail.com|retno123|01428800700|081242504777|50000|Sepulsa Kredit|Retno Wiji Astutik|
+
+Scenario: Pembelian PLN Prabayar Gagal (Split Pembayaran)
+Given pengguna berada di halaman awal web
+When Pengguna melakukan Sign In <email> <password>
+And klik Listrik PLN
+And Nomor meter PLN <nomor> yang benar
+And No. Handphone <No_HP> yang benar
+And memilih nominal <nominal>
+And pengguna melakukan pembayaran melalui <Bank>
+Then transaksi telah dibayar <Bank> <validasi>
+Examples:
+|email|password|nomor|No_HP|nominal|Bank|validasi|
+|retnowijiastutik@gmail.com|retno123|01428800700|081242504777|100000|Permata|Transaksi Sukses|
+
+
+
+
+
+
+
 
 

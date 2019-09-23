@@ -135,7 +135,7 @@ public class BPJS extends SerenityStory {
         bpjsSteps.validasiAnon(email);
     }
 
-    @Then("transaksi berhasil dibayar $Bank $validasi")
+    @Then("Transaksi berhasil $Bank $validasi")
     public void thenTransaksiBerhasilDibayar(String Bank, String validasi) {
         switch (Bank){
             case "BCA":
@@ -148,6 +148,18 @@ public class BPJS extends SerenityStory {
                 bpjsSteps.validasiPembayaranMandiri(validasi);
                 break;
             case "Credit Card":
+                bpjsSteps.validasiPembayaranSepulsa(validasi);
+                break;
+            case "Sepulsa Kredit":
+                bpjsSteps.validasiPembayaranSepulsa(validasi);
+                break;
+            case "BCA Failed":
+                bpjsSteps.validasiPembayaranSepulsa(validasi);
+                break;
+            case "Permata Failed":
+                bpjsSteps.validasiPembayaranSepulsa(validasi);
+                break;
+            case "Mandiri Failed":
                 bpjsSteps.validasiPembayaranSepulsa(validasi);
                 break;
         }
@@ -168,13 +180,14 @@ public class BPJS extends SerenityStory {
         }
     }
 
-    @Then("Pesan tidak dibayar dalam waktu yang ditentukan")
-    public void thenPesanTidakDibayarDalamWaktuYangDitentukan(){
-
+    @Then("Pesanan tidak dibayar dalam waktu yang ditentukan")
+    public void thenPesanTidakDibayarDalamWaktuYangDitentukan() {
+        // PENDING
     }
 
     @Then("Transaksi dibatalkan")
-    public void thenTransaksiDibatalkan(){
-
+    public void thenTransaksiDibatalkan() {
+        // PENDING
     }
+
 }

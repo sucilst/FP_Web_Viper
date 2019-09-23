@@ -177,4 +177,8 @@ public class PLNPostpaidSteps extends ScenarioSteps {
     public void ccCVV(String cvv){
         creditCardPages.ccCVV(cvv);
     }
+
+    public void validasiCC(){
+        creditCardPages.validasiCC();
+    }
 }

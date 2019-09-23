@@ -105,7 +105,7 @@ public class IsiPulsa extends SerenityStory {
     }
 
     @Then("transaksi berhasil $Bank $validasi")
-    public void thenTransaksiBerhasil(String Bank, String validasi) {
+    public void thenTransaksiBerhasilBankValidasi(String Bank, String validasi) {
         switch (Bank){
             case "BCA":
                 isiPulsaSteps.validasiPembayaranBCAPermata(validasi);
@@ -120,6 +120,15 @@ public class IsiPulsa extends SerenityStory {
                 isiPulsaSteps.validasiPembayaranSepulsa(validasi);
                 break;
             case "Credit Card":
+                isiPulsaSteps.validasiPembayaranSepulsa(validasi);
+                break;
+            case "BCA Failed":
+                isiPulsaSteps.validasiPembayaranSepulsa(validasi);
+                break;
+            case "Permata Failed":
+                isiPulsaSteps.validasiPembayaranSepulsa(validasi);
+                break;
+            case "Mandiri Failed":
                 isiPulsaSteps.validasiPembayaranSepulsa(validasi);
                 break;
         }

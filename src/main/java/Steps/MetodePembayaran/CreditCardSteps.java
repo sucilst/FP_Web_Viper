@@ -39,4 +39,8 @@ public class CreditCardSteps extends ScenarioSteps {
     public void ccPassword(){
         creditCardPages.ccPassword();
     }
+
+    public void validasiCC(){
+        creditCardPages.validasiCC();
+    }
 }

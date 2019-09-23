@@ -1,4 +1,5 @@
 Meta:
+@login
 
 Narrative:
 As seorang pengguna
@@ -43,9 +44,9 @@ And Password <password2> yang kosong
 And klik kembali tombol masuk
 Then pesan error ditampilkan <error>
 Examples:
-|email|password|nama_lengkap|password2|
-|retnowijiastutik@gmail.com|retno123|Retno Wiji Astutik||
-|opi@sepulsa.com|123456qwerty|Opi39||
+|email|password|nama_lengkap|password2|error|
+|retnowijiastutik@gmail.com|retno123|Retno Wiji Astutik||Email atau password salah.|
+|opi@sepulsa.com|123456qwerty|Opi39||Email atau password salah.|
 
 Scenario: Sign In Gagal (Sign Out kemudian Sign In lagi dengan email kosong)
 Given pengguna berada di halaman beranda
@@ -57,13 +58,13 @@ And klik akun
 And klik tombol sign out
 And klik Sign In
 And Email <email2> yang kosong
-And Password <password> yang kosong
+And Password <password> yang benar
 And klik kembali tombol masuk
 Then pesan error ditampilkan <error>
 Examples:
-|email|password|nama_lengkap|email2|
-|retnowijiastutik@gmail.com|retno123|Retno Wiji Astutik||
-|opi@sepulsa.com|123456qwerty|Opi39||
+|email|password|nama_lengkap|email2|error|
+|retnowijiastutik@gmail.com|retno123|Retno Wiji Astutik||Email atau password salah.|
+|opi@sepulsa.com|123456qwerty|Opi39||Email atau password salah.|
 
 Scenario: Sign In Gagal (Email Kosong dan Salah)
 Given pengguna berada di halaman beranda

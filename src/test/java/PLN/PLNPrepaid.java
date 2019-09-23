@@ -146,6 +146,9 @@ public class PLNPrepaid extends SerenityStory {
             case "Credit Card":
                 plnPrepaidSteps.validasiPembayaranSepulsa(validasi);
                 break;
+            case "Sepulsa Kredit":
+                plnPrepaidSteps.validasiPembayaranSepulsa(validasi);
+                break;
         }
     }
 

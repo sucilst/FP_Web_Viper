@@ -1,4 +1,5 @@
 Meta:
+@register
 
 Narrative:
 As seorang pengguna
@@ -20,11 +21,6 @@ Then berada di halaman dashboard <nama_lengkap>
 Examples:
 |nama_lengkap|email|No_HP|password|pilihan|
 |Difa Rakaditya|rakaditya@alterra.id|081242504777|alterra1997|ya|
-|Difa Rakaditya97|raka-ditya@alterra.id|081578021932|alterra1997|ya|
-|,,,,|slestari@alterra.id|085691091821|alterra1997|ya|
-!-- |Difa Rakaditya|rakaditya@alterra.id|081242504777|19971997|ya|
-|Difa Rakaditya|rakaditya@alterra.id|082276520892|,,,,,,|ya|
-!-- |Difa Rakaditya|rakaditya@alterra.id|081578021932|alterra|ya|
 
 Scenario: Sign Up Gagal (Nama Kurang dari 3 karakter)
 Given pengguna berada di halaman beranda
@@ -129,6 +125,5 @@ And klik tombol daftar
 Then pesan error tertampil <error>
 Examples:
 |nama_lengkap|email|No_HP|password|pilihan|error|
-|Suci Lestari|slestari@alterra.id|082276520892|Suci230997|ya|Email sudah terdaftar. Silahkan login.|
-|Suci Lestari|pardosilestari@gmail.com|082113013109|Suci230997|ya|Nomor handphone sudah terdaftar. Silahkan masukkan nomor handphone lain.|
-|Suci Lestari|raka-ditya@alterra.id|082113013109|Suci230997|ya|This email is already registered, please use another email.|
+|Suci Lestari|rakaditya@alterra.id|082276520892|Suci230997|ya|Email sudah terdaftar. Silahkan login.|
+|Suci Lestari|pardosilestari@gmail.com|081242504777|Suci230997|ya|Nomor handphone sudah terdaftar. Silahkan masukkan nomor handphone lain.|
